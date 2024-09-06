@@ -23,6 +23,6 @@ urlpatterns = [
     path('',views.home,name="home"),
     path('user/',include('user.urls')), 
     path('brands/',include('brands.urls')), 
-    path('models/',include('models.urls')), 
+    path('cars/',include('cars.urls')), 
 # 
 ]

@@ -39,4 +39,23 @@
       <span class="visually-hidden">Next</span>
     </button>
 </div>
+
+{% comment %} <div class="bg-white p-3" >
+  <h5>Our Brands</h5>
+  {% for cat in brand %}
+  <div class="form-check">
+    <input
+      class="form-check-input"
+      type="radio"
+      name="category"
+      id="{{cat.id}}"
+    />
+    <label class="form-check-label" for="{{cat.id}}">
+      
+      <a href="{% url 'category_wise_post' cat.slug %}" class="text-decoration-none text-dark" >{{cat.name}}</a>
+    </label>
+  </div>
+  {% endfor %}
+</div> {% endcomment %}
+
 {% endblock %}
