@@ -22,7 +22,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home,name="home"),
     path('user/',include('user.urls')), 
-    path('brands/',include('brands.urls')), 
     path('cars/',include('cars.urls')), 
+    path('brand/',include('brands.urls')), 
+    path('brand/<slug:brand_slug>/', views.home, name='brand_wise_post'),
 # 
 ]

@@ -40,22 +40,42 @@
     </button>
 </div>
 
-{% comment %} <div class="bg-white p-3" >
-  <h5>Our Brands</h5>
-  {% for cat in brand %}
-  <div class="form-check">
-    <input
-      class="form-check-input"
-      type="radio"
-      name="category"
-      id="{{cat.id}}"
-    />
-    <label class="form-check-label" for="{{cat.id}}">
-      
-      <a href="{% url 'category_wise_post' cat.slug %}" class="text-decoration-none text-dark" >{{cat.name}}</a>
-    </label>
-  </div>
+<div class="container my-5 " >
+  <h1 class="text-center mb-4">Select Brands</h1>
+  <div class="ms-5 rounded-pill py-3" style="background-color:#1560bd  ">
+    {% for b in brand %}
+    <div class="form-check form-check-inline" >
+      <input type="checkbox" class="btn-check" name="brand" id="{{b.id}}"  >
+      <label class="btn" for="{{b.id}}"><a href="{% url 'brand_wise_post' b.slug %}" class="text-decoration-none text-white fs-4 fw-semibold" >{{b.name}}</a></label>
+    </div>
   {% endfor %}
-</div> {% endcomment %}
+  </div>
+
+  {% comment %} <div class="col-10 p-3">
+    <h4>{{car | length}} results found</h4>
+    <div class="d-flex flex-wrap pt-5">
+      {% for post in car %}
+      <div class="col-sm-3">
+        <div class="card m-2">
+          <div class="card-body">
+            <img src="{{post.image.url}}" class="card-img-top" alt="...">
+            <h5 class="card-title"><a href="{% url 'detail_post' post.id %}" class="text-decoration-none text-dark">{{post.title}}</a></h5>
+            <p class="card-text">{{post.content |truncatewords:20}}</p>
+
+            <p>
+              Category : {% for cat in post.category.all %}
+              <button class="btn btn-primary btn-sm m-2" disabled>
+                {{cat.name}}
+              </button>
+              {% endfor %}
+            </p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div> {% endcomment %}
+  
+</div>
 
 {% endblock %}

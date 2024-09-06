@@ -6,9 +6,11 @@ from brands.models import Brand
 # Create your models here.
 class Car(models.Model):
     name = models.CharField(max_length=50)
-    content = models.TextField()
-    author = models.ForeignKey(Brand, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='posts/media/uploads/', blank = True, null = True)
+    description = models.TextField()
+    quantity = models.IntegerField(default="0")
+    price = models.IntegerField(default="0")
+    brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='cars/media/uploads/', blank = True, null = True)
     def __str__(self):
         return self.name 
     
