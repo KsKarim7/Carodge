@@ -5,5 +5,47 @@
 
 {% block content %}
 
+<div class="row m-3">
 
+    <div  class="col-6">
+        <img src="{{car.image.url}}" style="width: 100%;" class="p mx-auto" alt="...">
+   </div> 
+   <div class="col-6">
+        <div class="card mb-2" >
+            
+            <div class="card-body">
+            <h5 class="card-title">{{car.name}}</h5>
+            <p class="card-text">{{car.description}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+            <li class="list-group-item fw-semibold">${{car.price}}</li>
+            <li class="list-group-item">Brand: {{car.brand}}</li>
+            <li class="list-group-item">Available units: {{car.quantity}}</li>
+            </ul>
+            <div class="card-body" style="background-color:#0074B7">
+            <a href="" class="card-link  text-decoration-none text-white fs-4 fw-semibold">Buy Now</a>
+            </div>
+        </div>
+   </div>
+</div>
+<div class="card m-3">
+    <h5 class="p-3">Total Comments : {{comments | length}}</h5>
+    {% for comment in comments %}
+        <div class="card-body border m-2">
+            <p><b>{{comment.name}}</b> {{comment.created_on}}</p>
+            <p>{{comment.body}}</p>
+        </div>
+    {% endfor %}
+</div>
+<div class="card m-3">
+    <div class="card-body">
+        <form method="post">
+            <h2>Add Comment</h2>
+            {% csrf_token %}
+            {{comment_form | crispy}}
+            <button class="btn text-white" style="background-color:#003B73">Post</button>
+    </div>
+</div>
+
+    
 {% endblock %}

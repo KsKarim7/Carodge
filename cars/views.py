@@ -29,7 +29,7 @@ class DetailCarView(DetailView):
     model = models.Car
     template_name = 'car_details.html'
     
-    def car(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         comment_form = forms.CommentForm(data=self.request.POST)
         car = self.get_object()
         if comment_form.is_valid():

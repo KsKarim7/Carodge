@@ -60,15 +60,13 @@
             <img src="{{c.image.url}}" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">{{c.name}}</h5>
-              {% comment %} <p class="card-text">{{c.description |truncatewords:20}}</p> {% endcomment %}
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item fw-semibold">${{c.price}}</li>
               <li class="list-group-item">Brand: {{c.brand}}</li>
-              {% comment %} <li class="list-group-item">A third item</li> {% endcomment %}
             </ul>
             <div class="card-body" style="background-color:#0074B7">
-              <a href="#" class="card-link  text-decoration-none text-white fs-5 fw-semibold">View Details -></a>
+              <a href="{% url 'detail_car' c.id %}" class="card-link  text-decoration-none text-white fs-5 fw-semibold">View Details -></a>
             </div>
           </div>
         </div>
