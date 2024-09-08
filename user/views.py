@@ -27,7 +27,7 @@ class UserLoginView(LoginView):
         return reverse_lazy('profile')
 
     def form_valid(self,form):
-        messages.success(self.request,'Logged in successfully')
+        messages.success(self.request,"Logged in successfully")
         return super().form_valid(form)
     def form_invalid(self,form):
         messages.warning(self.request,'Invalid Login Credentials')

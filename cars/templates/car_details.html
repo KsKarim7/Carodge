@@ -22,9 +22,11 @@
             <li class="list-group-item">Brand: {{car.brand}}</li>
             <li class="list-group-item">Available units: {{car.quantity}}</li>
             </ul>
+            {% if request.user.is_authenticated %}
             <div class="card-body" style="background-color:#0074B7">
             <a href="" class="card-link  text-decoration-none text-white fs-4 fw-semibold">Buy Now</a>
             </div>
+            {% endif %}
         </div>
    </div>
 </div>
