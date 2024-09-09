@@ -1,0 +1,14 @@
+{% extends 'base.html' %} 
+{% load crispy_forms_tags %} 
+{% block content %}
+
+
+<form style="width: 50%; margin: auto" method="post">
+    <h1 class="mt-4">Update Your Profile</h1>
+
+    {% csrf_token %} {{form | crispy}}
+
+    <a class="btn text-light" style="background-color:#003B73" type="submit" href="{% url 'register' %}">Submit</a>
+</form>
+
+{% endblock %}

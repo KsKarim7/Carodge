@@ -1,5 +1,14 @@
 {% extends "base.html" %}
 
 {%  block content %}
-<h1>Profile</h1>
+<div>
+    {% comment %} <a class="btn btn-primary" href="{% url 'edit_profile' %}">
+      Edit Your Profile</a
+    > {% endcomment %}
+    <div class="d-flex justify-content-center ">
+        <a class="btn  text-light" style="background-color:#003B73" type="submit" href="{% url 'edit_profile' %}">Edit Your Profile</a>
+
+    </div>
+    {% comment %} <a class="btn mx-2 text-light" style="background-color:#003B73" type="submit" href="{% url 'register' %}">Sign Up</a> {% endcomment %}
+  </div>
 {% endblock %}

@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from . import forms
 from django.contrib import messages
 from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.urls import reverse_lazy
 
@@ -37,8 +38,26 @@ class UserLoginView(LoginView):
         context['type'] = 'Login'
         return context
     
+@login_required
 def profile(req):
-    return render(req,'profile.html')
+    
+    return render(req, 'profile.html')
+# def profile(req):
+#     data = Post.objects.filter(author = req.user)
+#     return render(req, 'profile.html', {'data' : data})
+
+@login_required
+def edit_profile(request):
+    if request.method == 'POST':
+        profile_form = forms.ChangeUserForm(request.POST, instance = request.user)
+        if profile_form.is_valid():
+            profile_form.save()
+            messages.success(request, 'Profile Updated Successfully')
+            return redirect('profile')
+    
+    else:
+        profile_form = forms.ChangeUserForm(instance = request.user)
+    return render(request, 'update_profile.html', {'form' : profile_form})
     
 def user_logout(req):
     logout(req)
